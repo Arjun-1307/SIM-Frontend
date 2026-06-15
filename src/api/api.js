@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5002",
+  baseURL: "https://sim-springboot.onrender.com/api/auth/login",
 });
 
 API.interceptors.request.use(
