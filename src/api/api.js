@@ -1,25 +1,17 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://sim-springboot.onrender.com/api/auth/login",
+  baseURL: "https://sim-springboot.onrender.com",
 });
 
-API.interceptors.request.use(
-  (config) => {
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
 
-    const token =
-      localStorage.getItem(
-        "token"
-      );
-
-    if (token) {
-
-      config.headers.Authorization =
-        `Bearer ${token}`;
-    }
-
-    return config;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-);
+
+  return config;
+});
 
 export default API;
